@@ -44,7 +44,7 @@ include "include/verificar_sesion.php";
                     <h2>CARGO</h2>
                     <ul class="nav navbar-right">
                       <li>
-                        <a href="estudiante.php" class="btn btn-success">Agregar Nuevo</a>
+                        <a href="cargos.php" class="btn btn-success">Agregar Nuevo</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -71,7 +71,7 @@ include "include/verificar_sesion.php";
 
 
 
-                          
+
                           <td><?php echo $res_b_estudiantes['apellidos_nombres'];  ?></td>
                           <td><?php echo $res_b_estudiantes['direccion']; ?></td>
                           <td><?php echo $res_b_estudiantes['id_programa_estudios']; ?></td>
