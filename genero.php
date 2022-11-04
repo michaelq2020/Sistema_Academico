@@ -44,7 +44,7 @@ include "include/verificar_sesion.php";
                     <h2>Género</h2>
                     <ul class="nav navbar-right">
                       <li>
-                        <a href="estudiante.php" class="btn btn-success">Agregar Nuevo</a>
+                        <a href="generos.php" class="btn btn-success">Agregar Nuevo</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -74,7 +74,7 @@ include "include/verificar_sesion.php";
                           <td><?php echo $res_b_estudiantes['id_programa_estudios']; ?></td>
                           <td><?php echo $res_b_estudiantes['id_semestre']; ?></td>
 
-                          
+
                           <td>
                             <a href="editar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-primary">Editar</a>
                             <a href="operaciones/eliminar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-danger">Eliminar</a>
