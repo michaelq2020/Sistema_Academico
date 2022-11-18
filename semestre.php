@@ -44,7 +44,7 @@ include "include/verificar_sesion.php";
                     <h2>SEMESTRES</h2>
                     <ul class="nav navbar-right">
                       <li>
-                        <a href="cargos.php" class="btn btn-success">Agregar Nuevo</a>
+                        <a href="semestres.php" class="btn btn-success">Agregar Nuevo</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -68,16 +68,40 @@ include "include/verificar_sesion.php";
                           <td>fisca</td>
                           <td>comercio electronico</td>
                           <td>diseño web</td>
-                          <td>2011/04/25</td>
-                          <td>$320,800</td>
+                          <td>ANIMACION DE GRAFICO</td>
+                          <td>DISEÑO WEB</td>
                         </tr>
                         <tr>
                           <td>mantenimiento de computadoras</td>
                           <td>fisca</td>
                           <td>comercio electronico</td>
                           <td>diseño web</td>
-                          <td>2011/04/25</td>
-                          <td>$320,800</td>
+                          <td>DISEÑO GRAFICO</td>
+                          <td>COMERCIO ELECTRONICO</td>
+                        </tr>
+                        <tr>
+                          <td>mantenimiento de computadoras</td>
+                          <td>fisca</td>
+                          <td>comercio electronico</td>
+                          <td>diseño web</td>
+                          <td>COMUNICACION EMPRESARIAL</td>
+                          <td>COMPORTAMIENTO ETICO</td>
+                        </tr>
+                        <tr>
+                          <td>mantenimiento de computadoras</td>
+                          <td>fisca</td>
+                          <td>comercio electronico</td>
+                          <td>diseño web</td>
+                          <td>DISEÑO WEB</td>
+                          <td>LEGISLACION E INSERCION LABORAL</td>
+                        </tr>
+                        <tr>
+                          <td>mantenimiento de computadoras</td>
+                          <td>fisca</td>
+                          <td>comercio electronico</td>
+                          <td>diseño web</td>
+                          <td>COMPORTAMIENTO ETICO</td>
+                          <td>APLICACIONES MOVILES</td>
                         </tr>
                       <tbody>
                       <tbody>
