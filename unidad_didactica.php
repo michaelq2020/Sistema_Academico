@@ -1,5 +1,5 @@
-<?php
-include "include/conexion.php";
+<?php 
+include "include/conexion.php"; 
 include "include/busquedas.php";
 include "include/verificar_sesion.php";
 ?>
@@ -20,12 +20,13 @@ include "include/verificar_sesion.php";
     <link href="Gentella/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="Gentella/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- bootstrap-progressbar -->
-    <link href="Gentella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="Gentella/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="Gentella/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="Gentella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="Gentella/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="Gentella/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="Gentella/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="Gentella/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom Theme Style -->
     <link href="Gentella/build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -40,126 +41,59 @@ include "include/verificar_sesion.php";
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Registro de unidad didactica</h2>
-                    
-                <div class="clearfix"></div>
+                    <h2>Modulo Formativo</h2>
+                    <ul class="nav navbar-right">
+                      <li>
+                        <a href="unidades_didacticas.php" class="btn btn-success">Agregar Nuevo</a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <br />
-                    <form class="form-horizontal form-label-left" method="POST" action="operaciones/registrar_unidad.php">
-
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">id :
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" name="id" maxlength="8" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">DESCRIPCION :
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="descripcion" maxlength="9" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Programa de Estudios :
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select name="programa_estudio" id="programa_estudio" class="form-control col-md-7 col-xs-12">
-                          <option value="">Seleccione</option>
-                          <?php
-                          $buscar_pe = buscarProgramaEstudio($conexion);
-                          while ($res_b_pe = mysqli_fetch_array($buscar_pe)) {
-                          ?>
-                          <option value="<?php echo $res_b_pe['id']; ?>"><?php echo $res_b_pe['nombre']; ?></option>
-                          <?php
-                          };
-                          ?>
-                        </select>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">MODULO :
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select name="programa_estudio" id="modulo" class="form-control col-md-7 col-xs-12">
-                          <option value="">Seleccione</option>
-                            <?php 
-                        $b_modulo = buscarModulo_formativo($conexion);
-                        while ($res_b_modulo = mysqli_fetch_array($b_modulo)) {
+                    
+                    <table id="example" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Descripcion</th>
+                          <th>programa estudios</th>
+                          <th>semestre</th>
+                          <th>creditos</th>
+                          <th>horas</th>
+                          <th>tipo</th>
+                          <th>orden</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php 
+                        $b_unidad = buscarUnidadDidactica($conexion);
+                        while ($res_b_unidad = mysqli_fetch_array($b_unidad)) {
                         ?>
-                          <option value="<?php echo $res_b_modulo['id']; ?>"><?php echo $res_b_modulo['nro_modulo']; ?></option>
-                          <?php
-                          };
-                          ?>
+                        <tr>
+                          <td><?php echo $res_b_unida['id']; ?></td>
+                          <td><?php echo $res_b_unida['descripcion']; ?></td>
+                          <td><?php echo $res_b_unida['id_programa_estudio'];  ?></td>
+                          <td><?php echo $res_b_unida['id_semestre']; ?></td>
+                          <td><?php echo $res_b_unida['creditos']; ?></td>
+                          <td><?php echo $res_b_unida['horas']; ?></td>
+                          <td><?php echo $res_b_unida['tipo']; ?></td>
+                          <td><?php echo $res_b_unida['orden']; ?></td>
+                          <td>
+                            <a href="editar_docente.php?id=<?php echo $res_b_docentes['id']; ?>" class="btn btn-primary">Editar</a>
+                            <a href="operaciones/eliminar_docente.php?id=<?php echo $res_b_docentes['id']; ?>" class="btn btn-danger">Eliminar</a>
+                          </td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
                         
-                           </select>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Semestre:
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select name="semestre" id="semestre" class="form-control col-md-7 col-xs-12">
-                          <option value="">Seleccione</option>
-                          <?php
-                          $buscar_sem = buscarSemestre($conexion);
-                          while ($res_b_sem = mysqli_fetch_array($buscar_sem)) {
-                          ?>
-                          <option value="<?php echo $res_b_sem['id']; ?>"><?php echo $res_b_sem['descripcion']; ?></option>
-                          <?php
-                          };
-                          ?>
-                        </select>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">CREDITOS :
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" name="creditos" maxlength="9" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">HORAS :
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" name="horas" maxlength="9" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">TIPO :
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="tipo" maxlength="9" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-
-
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">ORDEN :
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" name="orden" maxlength="9" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button class="btn btn-primary" type="button">Cancelar</button>
-						              <button class="btn btn-primary" type="reset">Limpiar</button>
-                          <button type="submit" class="btn btn-success">Guardar</button>
-                        </div>
-                      </div>
-
-                    </form>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
-            </div>
+          </div>
         </div>
         <!-- /page content -->
         <!-- footer content -->
@@ -172,6 +106,7 @@ include "include/verificar_sesion.php";
         <!-- /footer content -->
       </div>
     </div>
+    
     <!-- jQuery -->
     <script src="Gentella/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -180,36 +115,51 @@ include "include/verificar_sesion.php";
     <script src="Gentella/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="Gentella/vendors/nprogress/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="Gentella/vendors/Chart.js/dist/Chart.min.js"></script>
-    <!-- gauge.js -->
-    <script src="Gentella/vendors/gauge.js/dist/gauge.min.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="Gentella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
     <script src="Gentella/vendors/iCheck/icheck.min.js"></script>
-    <!-- Skycons -->
-    <script src="Gentella/vendors/skycons/skycons.js"></script>
-    <!-- Flot -->
-    <script src="Gentella/vendors/Flot/jquery.flot.js"></script>
-    <script src="Gentella/vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="Gentella/vendors/Flot/jquery.flot.time.js"></script>
-    <script src="Gentella/vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="Gentella/vendors/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="Gentella/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="Gentella/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="Gentella/vendors/flot.curvedlines/curvedLines.js"></script>
-    <!-- DateJS -->
-    <script src="Gentella/vendors/DateJS/build/date.js"></script>
-    <!-- JQVMap -->
-    <script src="Gentella/vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="Gentella/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="Gentella/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="Gentella/vendors/moment/min/moment.min.js"></script>
-    <script src="Gentella/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- Datatables -->
+    <script src="Gentella/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="Gentella/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="Gentella/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="Gentella/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="Gentella/vendors/pdfmake/build/vfs_fonts.js"></script>
+
     <!-- Custom Theme Scripts -->
     <script src="Gentella/build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $('#example').DataTable({
+      "language":{
+    "processing": "Procesando...",
+    "lengthMenu": "Mostrar _MENU_ registros",
+    "zeroRecords": "No se encontraron resultados",
+    "emptyTable": "Ningún dato disponible en esta tabla",
+    "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+    "search": "Buscar:",
+    "infoThousands": ",",
+    "loadingRecords": "Cargando...",
+    "paginate": {
+        "first": "Primero",
+        "last": "Último",
+        "next": "Siguiente",
+        "previous": "Anterior"
+    },
+      }
+    });
+
+    } );
+    </script>
   </body>
 </html>
