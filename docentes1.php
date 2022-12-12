@@ -32,3 +32,84 @@ include "include/verificar_sesion.php";
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
+      <?php include "include/menu.php" ?>  
+        <!-- Menu en la parte superior -->
+        <!-- page content -->
+        <div class="right_col" role="main">
+        <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Registro de Docentes</h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form class="form-horizontal form-label-left" method="POST" action="operaciones/registrar_docentes.php">
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">dni :
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" name="dni" maxlength="8" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">apellidos_nombres :
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" name="nom_ap" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                     
+                      
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">fecha_nac :
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" name="fecha_nac" class="date-picker form-control col-md-7 col-xs-12" required="required" >
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">dirección :
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" name="direccion" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">correo :
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">telefono :
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" name="cel" maxlength="9" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">id_genero :</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select name="id_genero" id="id_genero" class="form-control col-md-7 col-xs-12">
+                          <option value="">Seleccione</option>
+                          <?php
+                          $buscar_genero = buscarGenero($conexion);
+                          while ($res_b_genero = mysqli_fetch_array($buscar_genero)) {
+                          ?>
+                          <option value="<?php echo $res_b_genero['id']; ?>"><?php echo $res_b_genero['genero']; ?></option>
+                          <?php
+                          };
+                          ?>
+                        </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">nivel_educacion :
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select name="programa_estudio" id="programa_estudio" class="form-control col-md-7 col-xs-12">
