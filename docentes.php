@@ -65,3 +65,112 @@ include "include/verificar_sesion.php";
                           <th>nivel_educacion</th>
                           <th>cond_laboral</th>
                           <th>id_cargo</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php 
+                        $b_docentes = buscarEstudiantes($conexion);
+                        while ($res_b_docentes = mysqli_fetch_array($b_docentes)) {
+                        ?>
+                        <tr>
+                          <td><?php echo $res_b_docentes['id']; ?></td>
+                          <td><?php echo $res_b_docentes['dni']; ?></td>
+                          <td><?php echo $res_b_docentes['apellidos_nombres'];  ?></td>
+                          <td><?php echo $res_b_docentes
+                          ['fecha_nac']; ?></td>
+                          <td><?php echo $res_b_docentes
+                          ['direccion']; ?></td><td><?php echo $res_b_docentes
+                          ['correo']; ?></td>
+                          <td><?php echo $res_b_docentes
+                          ['telefono']; ?></td>
+                          <td><?php echo $res_b_docentes
+                          ['id_genero']; ?></td>
+                          <td><?php echo $res_b_docentes['nivel_educacion']; ?></td>
+                          <td><?php echo $res_b_docentes
+                          ['cond_laboral']; ?></td>
+                          <td><?php echo $res_b_docentes
+                          ['id_cargo']; ?></td>
+                          <td>
+                            <a href="editar_docentes.php?id=<?php echo $res_b_docentes['id']; ?>" class="btn btn-primary">Editar</a>
+                            <a href="operaciones/eliminar_docentes.php?id=<?php echo $res_b_docentes['id']; ?>" class="btn btn-danger">Eliminar</a>
+                          </td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <!-- /page content -->
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    
+    <!-- jQuery -->
+    <script src="Gentella/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="Gentella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="Gentella/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="Gentella/vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="Gentella/vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="Gentella/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="Gentella/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="Gentella/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="Gentella/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="Gentella/vendors/pdfmake/build/vfs_fonts.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="Gentella/build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $('#example').DataTable({
+      "language":{
+    "processing": "Procesando...",
+    "lengthMenu": "Mostrar _MENU_ registros",
+    "zeroRecords": "No se encontraron resultados",
+    "emptyTable": "Ningún dato disponible en esta tabla",
+    "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+    "search": "Buscar:",
+    "infoThousands": ",",
+    "loadingRecords": "Cargando...",
+    "paginate": {
+        "first": "Primero",
+        "last": "Último",
+        "next": "Siguiente",
+        "previous": "Anterior"
+    },
+      }
+    });
+
+    } );
+    </script>
+  </body>
+</html>
