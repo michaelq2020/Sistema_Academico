@@ -29,7 +29,7 @@ include "include/verificar_sesion.php";
     <!-- Custom Theme Style -->
     <link href="Gentella/build/css/custom.min.css" rel="stylesheet">
   </head>
-  body class="nav-md">
+  <body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <?php include "include/menu.php" ?>  
