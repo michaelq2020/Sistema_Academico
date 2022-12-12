@@ -41,10 +41,10 @@ include "include/verificar_sesion.php";
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Modulo Formativo</h2>
+                    <h2>Relacion de Estudiantes</h2>
                     <ul class="nav navbar-right">
                       <li>
-                        <a href="modulos_formativos.php" class="btn btn-success">Agregar Nuevo</a>
+                        <a href="estudiante.php" class="btn btn-success">Agregar Nuevo</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -55,26 +55,27 @@ include "include/verificar_sesion.php";
                       <thead>
                         <tr>
                           <th>Id</th>
-                          <th>Descripcion</th>
-                          <th>Modulo</th>
-                          <th>Programa de Estudios</th>
-                          <th>Acciones</th>
+                          <th>descripcion</th>
+                          <th>nro_modulo</th>
+                          <th>id_programa_estudio</th>
+
                         </tr>
                       </thead>
                       <tbody>
                         <?php 
-                        $b_modulo = buscarModulo_formativo($conexion);
-                        while ($res_b_modulo = mysqli_fetch_array($b_modulo)) {
+                        $b_estudiantes = buscarEstudiantes($conexion);
+                        while ($res_b_estudiantes = mysqli_fetch_array($b_estudiantes)) {
                         ?>
                         <tr>
-                          <td><?php echo $res_b_modulo['id']; ?></td>
-                          <td><?php echo $res_b_modulo['descripcion']; ?></td>
-                          <td><?php echo $res_b_modulo['nro_modulo'];  ?></td>
-                          <td><?php echo $res_b_modulo['id_programa_estudio']; ?></td>
-                          
+                          <td><?php echo $res_b_estudiantes['id']; ?></td>
+                          <td><?php echo $res_b_estudiantes['dni']; ?></td>
+                          <td><?php echo $res_b_estudiantes['apellidos_nombres'];  ?></td>
+                          <td><?php echo $res_b_estudiantes['direccion']; ?></td>
+                          <td><?php echo $res_b_estudiantes['id_programa_estudios']; ?></td>
+                          <td><?php echo $res_b_estudiantes['id_semestre']; ?></td>
                           <td>
-                            <a href="editar_docente.php?id=<?php echo $res_b_docentes['id']; ?>" class="btn btn-primary">Editar</a>
-                            <a href="operaciones/eliminar_docente.php?id=<?php echo $res_b_docentes['id']; ?>" class="btn btn-danger">Eliminar</a>
+                            <a href="editar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-primary">Editar</a>
+                            <a href="operaciones/eliminar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-danger">Eliminar</a>
                           </td>
                         </tr>
                         <?php
@@ -134,12 +135,12 @@ include "include/verificar_sesion.php";
     $('#example').DataTable({
       "language":{
     "processing": "Procesando...",
-    "lengthMenu": "Mostrar _MENU_ registros",
+    "lengthMenu": "Mostrar MENU registros",
     "zeroRecords": "No se encontraron resultados",
     "emptyTable": "Ningún dato disponible en esta tabla",
-    "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfo": "Mostrando del START al END de un total de TOTAL registros",
     "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+    "infoFiltered": "(filtrado de un total de MAX registros)",
     "search": "Buscar:",
     "infoThousands": ",",
     "loadingRecords": "Cargando...",
