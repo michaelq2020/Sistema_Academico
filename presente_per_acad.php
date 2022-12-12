@@ -56,7 +56,7 @@ include "include/verificar_sesion.php";
                         <tr>
                           <th>Id</th>
                           <th>periodo academico</th>
-                           <th>Acciones</th>
+                           <th>Observaciones</th>
                         </tr>
                       </thead>
                       <tbody>
