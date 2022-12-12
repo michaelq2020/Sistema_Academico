@@ -32,7 +32,7 @@ include "include/verificar_sesion.php";
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-      <?php include "include/menu.php" ?>  
+        <?php include "include/menu.php" ?>  
         <!-- Menu en la parte superior -->
         <!-- page content -->
         <div class="right_col" role="main">
@@ -113,7 +113,7 @@ include "include/verificar_sesion.php";
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         <select name="programa_estudio" id="programa_estudio" class="form-control col-md-7 col-xs-12">
-                        <option value="">Seleccione</option>
+                          <option value="">Seleccione</option>
                           <?php
                           $buscar_pe = buscarProgramaEstudio($conexion);
                           while ($res_b_pe = mysqli_fetch_array($buscar_pe)) {

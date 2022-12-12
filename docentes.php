@@ -65,7 +65,8 @@ include "include/verificar_sesion.php";
                           <th>nivel_educacion</th>
                           <th>cond_laboral</th>
                           <th>id_cargo</th>
-                          </tr>
+
+                        </tr>
                       </thead>
                       <tbody>
                         <?php 
