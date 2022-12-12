@@ -67,4 +67,98 @@ include "include/verificar_sesion.php";
                         </tr>
                       </thead>
                       <tbody>
-                          
+                      <?php 
+                        $b_estudiantes = buscarEstudiantes($conexion);
+                        while ($res_b_estudiantes = mysqli_fetch_array($b_estudiantes)) {
+                        ?>
+                        <tr>
+                          <td><?php echo $res_b_estudiantes['id']; ?></td>
+                          <td><?php echo $res_b_estudiantes['dni']; ?></td>
+                          <td><?php echo $res_b_estudiantes['apellidos_nombres'];  ?></td>
+                          <td><?php echo $res_b_estudiantes['direccion']; ?></td>
+                          <td><?php echo $res_b_estudiantes['id_programa_estudios']; ?></td>
+                          <td><?php echo $res_b_estudiantes['id_semestre']; ?></td>
+                          <td>
+                            <a href="editar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-primary">Editar</a>
+                            <a href="operaciones/eliminar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-danger">Eliminar</a>
+                          </td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <!-- /page content -->
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    
+    <!-- jQuery -->
+    <script src="Gentella/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="Gentella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="Gentella/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="Gentella/vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="Gentella/vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="Gentella/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="Gentella/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="Gentella/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="Gentella/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="Gentella/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="Gentella/vendors/pdfmake/build/vfs_fonts.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="Gentella/build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $('#example').DataTable({
+      "language":{
+    "processing": "Procesando...",
+    "lengthMenu": "Mostrar _MENU_ registros",
+    "zeroRecords": "No se encontraron resultados",
+    "emptyTable": "Ningún dato disponible en esta tabla",
+    "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+    "search": "Buscar:",
+    "infoThousands": ",",
+    "loadingRecords": "Cargando...",
+    "paginate": {
+        "first": "Primero",
+        "last": "Último",
+        "next": "Siguiente",
+        "previous": "Anterior"
+    },
+      }
+    });
+
+    } );
+    </script>
+  </body>
+</html>
