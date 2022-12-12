@@ -44,7 +44,7 @@ include "include/verificar_sesion.php";
                     <h2>Relacion de Estudiantes</h2>
                     <ul class="nav navbar-right">
                       <li>
-                        <a href="genero1.php" class="btn btn-success">Agregar Nuevo</a>
+                        <a href="estudiante.php" class="btn btn-success">Agregar Nuevo</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -55,20 +55,24 @@ include "include/verificar_sesion.php";
                       <thead>
                         <tr>
                           <th>Id</th>
-                          <th>id_periodo_acad</th>
+                          <th>NOMBRE</th>
+                          <th>FECHA_INICIO</th>
+                          <th>FECHA_FIN</th>
+                          <th>DIRECTOR</th>
+                          <th>FECHA_ACTAS</th>
 
                         </tr>
                       </thead>
                       <tbody>
                         <?php 
-                        $b_genero = buscarGenero($conexion);
-                        while ($res_b_genero = mysqli_fetch_array($b_genero)) {
+                        $b_estudiantes = buscarEstudiantes($conexion);
+                        while ($res_b_estudiantes = mysqli_fetch_array($b_estudiantes)) {
                         ?>
                         <tr>
-                          
-                      
-                    
-                 
+                          <td><?php echo $res_b_estudiantes['id']; ?></td>
+                          <td><?php echo $res_b_estudiantes['dni']; ?></td>
+                          <td><?php echo $res_b_estudiantes['apellidos_nombres'];  ?></td>
+                          <td><?php echo $res_b_estudiantes['direccion']; ?></td>
                           <td><?php echo $res_b_estudiantes['id_programa_estudios']; ?></td>
                           <td><?php echo $res_b_estudiantes['id_semestre']; ?></td>
                           <td>
