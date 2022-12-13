@@ -1,7 +1,8 @@
 <?php 
-include "include/conexion.php"; 
+include "include/conexion.php";
 include "include/busquedas.php";
 include "include/verificar_sesion.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@ include "include/verificar_sesion.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gentelella Alela! | </title>
+    <title>Gentelella Alela! |</title>
     <!-- Bootstrap -->
     <link href="Gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -44,7 +45,7 @@ include "include/verificar_sesion.php";
                     <h2>Relacion de Docentes</h2>
                     <ul class="nav navbar-right">
                       <li>
-                        <a href="docentes1.php" class="btn btn-success">Agregar Nuevo</a>
+                        <a href="registrar_docente.php" class="btn btn-success">Agregar nuevo</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -54,46 +55,48 @@ include "include/verificar_sesion.php";
                     <table id="example" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Id</th>
-                          <th>dni</th>
-                          <th>apellidos_nombres</th>
-                          <th>fecha_nac</th>
-                          <th>direccion</th>
-                          <th>correo</th>
-                          <th>telefono</th>
-                          <th>id_genero</th>
-                          <th>nivel_educacion</th>
-                          <th>cond_laboral</th>
-                          <th>id_cargo</th>
-
+                          <th>Identificador</th>
+                          <th>DNI</th>
+                          <th>APELLIDOS Y NOMBRES</th>
+                          <th>DECHA DE NACIMIENTO</th>
+                          <th>DIRECCION</th>
+                          <th>CORREO</th>
+                          <th>TELEFONO</th>
+                          <th>GENERO</th>
+                          <th>NIVEL DE EDUCACION</th>
+                          <th>CONDICION LABORAL</th>
+                          <th>CARGO</th>
+                          <th>Acciones</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php 
-                        $b_docentes = buscarEstudiantes($conexion);
-                        while ($res_b_docentes = mysqli_fetch_array($b_docentes)) {
+                        $b_docente = buscarDocente($conexion);
+                        while ($res_b_docente = mysqli_fetch_array($b_docente)) {
                         ?>
-                        <tr>
-                          <td><?php echo $res_b_docentes['id']; ?></td>
-                          <td><?php echo $res_b_docentes['dni']; ?></td>
-                          <td><?php echo $res_b_docentes['apellidos_nombres'];  ?></td>
-                          <td><?php echo $res_b_docentes
-                          ['fecha_nac']; ?></td>
-                          <td><?php echo $res_b_docentes
-                          ['direccion']; ?></td><td><?php echo $res_b_docentes
-                          ['correo']; ?></td>
-                          <td><?php echo $res_b_docentes
-                          ['telefono']; ?></td>
-                          <td><?php echo $res_b_docentes
-                          ['id_genero']; ?></td>
-                          <td><?php echo $res_b_docentes['nivel_educacion']; ?></td>
-                          <td><?php echo $res_b_docentes
-                          ['cond_laboral']; ?></td>
-                          <td><?php echo $res_b_docentes
-                          ['id_cargo']; ?></td>
+                        <tr><td>
+                          <?php echo $res_b_docente['id']; ?></td>
+                          <td><?php echo $res_b_docente['dni']; ?></td>
+                          <td><?php echo $res_b_docente['apellidos_nombres'];  ?></td>
+                          <td><?php echo $res_b_docente['fecha_nac']; ?></td>
+                          <td><?php echo $res_b_docente['direccion']; ?></td>
+                          <td><?php echo $res_b_docente['correo']; ?></td>
+                          <td><?php echo $res_b_docente['telefono']; ?></td>
+                          <?php 
+                            $b_genero = buscarGeneroById($conexion, $res_b_docente['id_genero']);
+                            $res_b_id_genero = mysqli_fetch_array($b_genero);
+                          ?>
+                          <td><?php echo $res_b_id_genero['genero']; ?></td>
+                          <td><?php echo $res_b_docente['nivel_educacion']; ?></td>
+                          <td><?php echo $res_b_docente['cond_laboral']; ?></td>
+                          <?php 
+                            $b_cargo = buscarCargoById($conexion, $res_b_docente['id_cargo']);
+                            $res_b_id_genero = mysqli_fetch_array($b_cargo);
+                          ?>
+                          <td><?php echo $res_b_id_genero['descripcion']; ?></td>
                           <td>
-                            <a href="editar_docentes.php?id=<?php echo $res_b_docentes['id']; ?>" class="btn btn-primary">Editar</a>
-                            <a href="operaciones/eliminar_docentes.php?id=<?php echo $res_b_docentes['id']; ?>" class="btn btn-danger">Eliminar</a>
+                            <a href="editar_docente.php?id=<?php echo $res_b_docente['id']; ?>" class="btn btn-primary"> Editar</a>
+                            <a href="operaciones/eliminar_docente.php?id=<?php echo $res_b_docente['id']; ?>" class="btn btn-danger">Eliminar</a>
                           </td>
                         </tr>
                         <?php
