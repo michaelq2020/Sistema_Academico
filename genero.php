@@ -1,17 +1,19 @@
-<?php 
-include "include/conexion.php"; 
+<?php
+include "include/conexion.php";
 include "include/busquedas.php";
 include "include/verificar_sesion.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gentelella Alela! | </title>
+    <title>Género | </title>
     <!-- Bootstrap -->
     <link href="Gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -29,76 +31,69 @@ include "include/verificar_sesion.php";
 
     <!-- Custom Theme Style -->
     <link href="Gentella/build/css/custom.min.css" rel="stylesheet">
-  </head>
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <?php include "include/menu.php" ?>  
-        <!-- Menu en la parte superior -->
-        <!-- page content -->
-        <div class="right_col" role="main">
-        <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Relacion de Estudiantes</h2>
-                    <ul class="nav navbar-right">
-                      <li>
-                        <a href="genero1.php" class="btn btn-success">Agregar Nuevo</a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    
-                    <table id="example" class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>Id</th>
-                          <th>genero</th>
+</head>
 
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php 
-                        $b_genero = buscarGenero($conexion);
-                        while ($res_b_genero = mysqli_fetch_array($b_genero)) {
-                        ?>
-                        <tr>
-                          
-                      
-                    
-                 
-                          <td><?php echo $res_b_estudiantes['id_programa_estudios']; ?></td>
-                          <td><?php echo $res_b_estudiantes['id_semestre']; ?></td>
-                          <td>
-                            <a href="editar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-primary">Editar</a>
-                            <a href="operaciones/eliminar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-danger">Eliminar</a>
-                          </td>
-                        </tr>
-                        <?php
-                        }
-                        ?>
-                        
-                      </tbody>
-                    </table>
-                  </div>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <?php include "include/menu.php" ?>
+            <!-- Menu en la parte superior -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title ">
+                                <h2>Géneros</h2>
+                                <ul class="nav navbar-right">
+                                <a href="genero1.php" class="btn btn-success"> Agregar nuevo</a>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <table id="example" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Cargo</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $buscar_genero = buscarGenero($conexion);
+                                        while ($res_buscar_genero= mysqli_fetch_array($buscar_genero)) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $res_buscar_genero['genero']; ?></td>
+                                                <td>
+                                                    <span class="justify-center">
+                                                    <a href="editar_genero.php?id=<?php echo $res_buscar_genero['id']; ?>" class="btn btn-primary">Editar</a>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-          </div>
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
         </div>
-        <!-- /page content -->
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-      </div>
     </div>
-    
+
     <!-- jQuery -->
     <script src="Gentella/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -129,29 +124,30 @@ include "include/verificar_sesion.php";
     <!-- Custom Theme Scripts -->
     <script src="Gentella/build/js/custom.min.js"></script>
     <script>
-    $(document).ready(function() {
-    $('#example').DataTable({
-      "language":{
-    "processing": "Procesando...",
-    "lengthMenu": "Mostrar _MENU_ registros",
-    "zeroRecords": "No se encontraron resultados",
-    "emptyTable": "Ningún dato disponible en esta tabla",
-    "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
-    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-    "search": "Buscar:",
-    "infoThousands": ",",
-    "loadingRecords": "Cargando...",
-    "paginate": {
-        "first": "Primero",
-        "last": "Último",
-        "next": "Siguiente",
-        "previous": "Anterior"
-    },
-      }
-    });
+        $(document).ready(function() {
+            $('#example').DataTable({
+                "language": {
+                    "processing": "Procesando...",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "emptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "search": "Buscar:",
+                    "infoThousands": ",",
+                    "loadingRecords": "Cargando...",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                }
+            });
 
-    } );
+        });
     </script>
-  </body>
+</body>
+
 </html>
